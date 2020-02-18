@@ -1,10 +1,13 @@
 require('dotenv').config();
-var admin = require('firebase-admin');
-var express = require('express');
-var app = express();
+const admin = require('firebase-admin');
+const defaultApp = admin.initializeApp();
+const express = require('express');
+const app = express();
+
+let db = admin.firestore();
 
 app.get('/', function (req, res) {
-    res.send('<b>My</b> first express http server by ' + process.env.TEST_VALUE);
+    res.send('<b>My</b> first express http server by ' + process.env.FIREBASE_CONFIG);
 });
 
 app.listen(3000, function() {
